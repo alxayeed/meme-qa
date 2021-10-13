@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meme_qa/screens/homepage.dart';
 
 void main() {
   runApp(const MemeQa());
@@ -9,6 +10,10 @@ class MemeQa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Meme QA",
+      home: Homepage(),
+    );
   }
 }
