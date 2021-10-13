@@ -13,6 +13,11 @@ class MemeQa extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Meme QA",
+      // ignore: todo
+      //TODO: change theme color
+      // theme: ThemeData(
+      //   primarySwatch: Colors.cyan
+      // ),
       home: Homepage(),
     );
   }
