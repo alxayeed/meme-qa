@@ -22,6 +22,13 @@ class _HomepageState extends State<Homepage> {
 
   // process answer response
   _handleGetAnswer() async {
+    String questionText = _questionFieldController.text.trim();
+    bool invalidQuestion = questionText != null &&
+        questionText.isNotEmpty &&
+        questionText[questionText.length - 1] == "?";
+    if (!invalidQuestion) {
+      return;
+    }
     String url = 'https://yesno.wtf/api';
     try {
       http.Response response = await http.get(Uri.parse(url));
