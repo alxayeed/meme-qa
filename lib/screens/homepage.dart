@@ -21,7 +21,7 @@ class _HomepageState extends State<Homepage> {
   Answer? _currentAnswer;
 
   // Scaffold State to notify the user with snackbar
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // process answer response
   _handleGetAnswer() async {
@@ -51,6 +51,14 @@ class _HomepageState extends State<Homepage> {
       print(e);
       print(stacktrace);
     }
+  }
+
+  // Reset operation
+  _resetQuestion() {
+    _questionFieldController.text = "";
+    setState(() {
+      _currentAnswer = null;
+    });
   }
 
   @override
@@ -128,7 +136,7 @@ class _HomepageState extends State<Homepage> {
                 width: 20,
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _resetQuestion,
                   child: const Text("Refresh"),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.lightBlue[400],
