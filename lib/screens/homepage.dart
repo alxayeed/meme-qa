@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unused_field, unnecessary_null_comparison
+// ignore_for_file: avoid_print, unused_field, unnecessary_null_comparison, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -20,6 +20,9 @@ class _HomepageState extends State<Homepage> {
   // Store current answer object
   Answer? _currentAnswer;
 
+  // Scaffold State to notify the user with snackbar
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   // process answer response
   _handleGetAnswer() async {
     String questionText = _questionFieldController.text.trim();
@@ -27,6 +30,11 @@ class _HomepageState extends State<Homepage> {
         questionText.isNotEmpty &&
         questionText[questionText.length - 1] == "?";
     if (!invalidQuestion) {
+      _scaffoldKey.currentState!.showSnackBar(const SnackBar(
+        content: Text("Please ask a valid Question"),
+        duration: Duration(seconds: 3),
+        backgroundColor: Colors.pink,
+      ));
       return;
     }
     String url = 'https://yesno.wtf/api';
@@ -48,6 +56,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         // ignore: todo
         //TODO: center allign
@@ -122,7 +131,7 @@ class _HomepageState extends State<Homepage> {
                   onPressed: () {},
                   child: const Text("Refresh"),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.deepOrange,
+                    primary: Colors.lightBlue[400],
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     shape: RoundedRectangleBorder(
