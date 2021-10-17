@@ -56,4 +56,4 @@
 
 <br/>
 
-[![Deploy](img/btn.png)](https://covidroom.herokuapp.com/)
+[![Deploy](img/btn.png)](https://memeqa.netlify.app/)
